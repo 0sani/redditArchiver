@@ -10,3 +10,5 @@ credentials.py
 # cleanup script
 clearOutput.sh
 
+# I put test files here, and sometimes I want to ignore it
+*.json 

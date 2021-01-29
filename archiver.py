@@ -108,7 +108,7 @@ def save_post(postId):
     post["score"] = submission.score
     
     #gets the body text of the post, or the url of the media
-    if submission.selftext == "":
+    if submission.is_self:
         post["body"] = get_media_url(submission)
     else:
         post["body"] = submission.selftext 
@@ -155,4 +155,4 @@ for submission in reddit.subreddit(subreddit).hot(limit=numPosts):
 
 
         #can be changed, I'm going better safe than sorry with API limits
-        sleep(5)
+        sleep(2)
