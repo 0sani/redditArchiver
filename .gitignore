@@ -1,0 +1,12 @@
+# ignores all output files
+outputFiles/*
+
+# ignores __pycache__
+__pycache__/
+
+# credentials
+credentials.py
+
+# cleanup script
+clearOutput.sh
+
