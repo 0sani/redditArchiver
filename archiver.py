@@ -47,7 +47,12 @@ def get_media_url(postID):
 # saves the media to the current directory (probably can fix later, I think the current way isn't great)
 def save_media(postId):
     url = get_media_url(postId)
-    os.system(f"wget -U \"{credentials.user_agent}\" -O \"{postId}.{url[-3:]}\" {url}")
+
+    contentType = requests.get(url).headers["Content-Type"]
+    extension = contentType.split("/")[1]
+
+    if ("video" in contentType or "image" in contentType):
+        os.system(f"wget -U \"{credentials.user_agent}\" -O \"{postId}.{extension}\" {url}")
 
 
 #recursive function in order to save all of the comments in the original tree
