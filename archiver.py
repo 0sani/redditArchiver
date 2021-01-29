@@ -33,7 +33,7 @@ basePath = credentials.basePath
 # gets the url of the media, provided that the input post is has either an image or a video
 def get_media_url(postID):
     outURL = f'https://www.reddit.com/{postID}/.json'
-    r = requests.get(outURL,headers={'User-agent':"0sani:script:testing"})
+    r = requests.get(outURL,headers={'User-agent':credentials.user_agent})
     out = r.json()
 
     path = out[0]['data']['children'][0]["data"]
