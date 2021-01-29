@@ -109,9 +109,9 @@ def save_post(postId):
     
     #gets the body text of the post, or the url of the media
     if submission.is_self:
-        post["body"] = get_media_url(submission)
-    else:
         post["body"] = submission.selftext 
+    else:
+        post["body"] = get_media_url(submission)
 
     # gets a dict of the comments in a tree
     comments = {}
@@ -140,7 +140,7 @@ for submission in reddit.subreddit(subreddit).hot(limit=numPosts):
         post = save_post(postId)
         
         # saves the media  
-        if submission.selftext == "":
+        if not submission.is_self:
             save_media(postId)
 
         #writes to json
